@@ -185,6 +185,9 @@ Class injects plugin preferences into AndroidManifest.xml file.
 
     // generate intent-filters
     pluginPreferences.hosts.forEach(function(host) {
+      if (host.platform && host.platform !== "android") {
+        return;
+      }
       host.paths.forEach(function(hostPath) {
         ulIntentFilters.push(createIntentFilter(host.name, host.scheme, hostPath));
       });

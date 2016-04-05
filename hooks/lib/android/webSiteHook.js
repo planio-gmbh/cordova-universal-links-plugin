@@ -85,6 +85,9 @@ https://developer.android.com/training/app-indexing/enabling-app-indexing.html
       content = '';
 
     pluginPreferences.hosts.forEach(function(host) {
+      if (host.platform && host.platform !== "android") {
+        return;
+      }
       host.paths.forEach(function(hostPath) {
         content += generateLinkTag(linkTpl, host.scheme, host.name, hostPath) + '\n';
       });

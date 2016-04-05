@@ -69,6 +69,9 @@ Additional documentation regarding apple-app-site-association file can be found 
     }
 
     pluginPreferences.hosts.forEach(function(host) {
+      if (host.platform && host.platform !== "ios") {
+        return;
+      }
       var content = generateFileContentForHost(host, teamId);
       saveContentToFile(host.name, content);
     });
