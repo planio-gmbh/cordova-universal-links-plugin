@@ -111,6 +111,11 @@ Parser for config.xml file. Read plugin-specific preferences (from <universal-li
       host.scheme = hostProperties.scheme;
     }
 
+    // read platform if defined
+    if (hostProperties.platform !== null) {
+      host.platform = hostProperties.platform;
+    }
+
     // construct paths list, defined for the given host
     host.paths = constructPaths(xmlElement);
 

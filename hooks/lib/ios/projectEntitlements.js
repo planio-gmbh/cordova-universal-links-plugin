@@ -114,6 +114,9 @@ Script only generates content. File it self is included in the xcode project in 
 
     // generate list of host links
     pluginPreferences.hosts.forEach(function(host) {
+      if (host.platform && host.platform !== "ios") {
+        return;
+      }
       link = domainsListEntryForHost(host);
       domainsList.push(link);
     });
